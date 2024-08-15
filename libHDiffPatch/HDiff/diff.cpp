@@ -36,6 +36,8 @@
 #include "private_diff/compress_detect.h"
 #include "private_diff/pack_uint.h"
 #include "../HPatch/patch.h"
+#include <algorithm>
+
 using namespace hdiff_private;
 
 static const char kHDiffVersionType[8+1]="HDIFF13&";
