@@ -251,7 +251,7 @@ int hpatch(const char* oldFileName,const char* diffFileName,const char* outNewFi
             check(hpatch_FALSE,HPATCH_HDIFFINFO_ERROR,"is hdiff file? getCompressedDiffInfo() ERROR!\n");
         }
         if (poldData->streamSize!=diffInfo.oldDataSize){
-            printf("oldFile dataSize %" PRId64 " != diffFile saved oldDataSize %" PRId64 " ERROR!\n",
+            printf("oldFile dataSize %" PRI_StreamPos " != diffFile saved oldDataSize %" PRI_StreamPos " ERROR!\n",
                    poldData->streamSize,diffInfo.oldDataSize);
             check_on_error(HPATCH_FILEDATA_ERROR);
         }
@@ -296,7 +296,7 @@ int hpatch(const char* oldFileName,const char* diffFileName,const char* outNewFi
     }
     check(TFileStreamOutput_open(&newData, outNewFileName,savedNewSize),
           HPATCH_OPENWRITE_ERROR,"open out newFile for write ERROR!\n");
-    printf("oldDataSize : %" PRId64 "\ndiffDataSize: %" PRId64 "\nnewDataSize : %" PRId64 "\n",
+    printf("oldDataSize : %" PRI_StreamPos "\ndiffDataSize: %" PRI_StreamPos "\nnewDataSize : %" PRI_StreamPos "\n",
            poldData->streamSize,diffData.base.streamSize,newData.base.streamSize);
     
     if (isLoadOldAll){
@@ -330,7 +330,7 @@ int hpatch(const char* oldFileName,const char* diffFileName,const char* outNewFi
         check(hpatch_FALSE,HPATCH_PATCH_ERROR,"patch run ERROR!\n");
     }
     if (newData.out_length!=newData.base.streamSize){
-        printf("out newFile dataSize %" PRId64 " != diffFile saved newDataSize %" PRId64 " ERROR!\n",
+        printf("out newFile dataSize %" PRI_StreamPos " != diffFile saved newDataSize %" PRI_StreamPos " ERROR!\n",
                newData.out_length,newData.base.streamSize);
         check_on_error(HPATCH_FILEDATA_ERROR);
     }
